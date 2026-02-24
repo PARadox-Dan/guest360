@@ -1,0 +1,418 @@
+/* PAR Punchh design system tokens - scoped to this prototype */
+.appShell {
+  --primary: #5D5FEF;
+  --primaryHover: #4c4ed4;
+  --navy: #1A2033;
+  --orange: #FF9500;
+  --tagGreen: #22c55e;
+  --infoBg: #eff6ff;
+  --infoBorder: #3b82f6;
+  --textPrimary: #1a1a1a;
+  --textSecondary: #6b7280;
+  --textMuted: #9ca3af;
+  --border: #e5e7eb;
+  --cardShadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --cardShadowHover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  display: flex;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--navy);
+  padding: 1rem 0;
+}
+
+.sidebarSearch {
+  display: flex;
+  align-items: center;
+  margin: 0 0.75rem 1rem;
+}
+
+.skeleton {
+  display: block;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  min-height: 0.5rem;
+}
+
+.skeletonSearch {
+  width: 100%;
+  height: 2rem;
+  border-radius: 8px;
+}
+
+.skeletonSection {
+  width: 4rem;
+  height: 0.625rem;
+}
+
+.skeletonNav {
+  height: 0.875rem;
+}
+
+.skeletonSub {
+  height: 0.75rem;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.sidebarNavItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  padding-left: calc(1rem + 4px);
+  border-left: 4px solid transparent;
+  transition: background 0.2s;
+}
+
+.sidebarNavItemActive {
+  border-left-color: var(--orange);
+}
+
+.sidebarNavItemActive .skeleton {
+  background: rgba(255, 149, 0, 0.35);
+}
+
+.sidebarNavSection {
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.sidebarNavSubItem {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  padding-left: 2rem;
+}
+
+.mainWrapper {
+  flex: 1;
+  min-width: 0;
+  background: #f9fafb;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--textPrimary);
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--textSecondary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--tagGreen);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.filterButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--textSecondary);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.filterButton:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #fff;
+}
+
+.filterButton.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.discoveryStats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: var(--infoBg);
+  border-radius: 8px;
+  border-left: 4px solid var(--infoBorder);
+}
+
+.discoveryText {
+  font-size: 0.875rem;
+  color: var(--textPrimary);
+  font-weight: 500;
+}
+
+.discoverAllButton {
+  padding: 0.5rem 1rem;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.discoverAllButton:hover {
+  background: var(--primaryHover);
+}
+
+.insightsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.insightCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  border: 1px solid var(--border);
+  box-shadow: var(--cardShadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.insightCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--border);
+  transition: background 0.2s ease;
+}
+
+.insightCard.high::before {
+  background: var(--orange);
+}
+
+.insightCard.medium::before {
+  background: var(--primary);
+}
+
+.insightCard.low::before {
+  background: var(--textMuted);
+}
+
+.insightCard:hover {
+  box-shadow: var(--cardShadowHover);
+  border-color: var(--primary);
+}
+
+.insightCard.expanded {
+  border-color: var(--primary);
+  box-shadow: var(--cardShadowHover);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.categoryBadge {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  background: #f3f4f6;
+  border-radius: 6px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--textSecondary);
+}
+
+.newBadge {
+  font-size: 0.6875rem;
+  color: var(--primary);
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.insightTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  margin: 0 0 1rem 0;
+  line-height: 1.35;
+}
+
+.metrics {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.primaryMetric {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--textPrimary);
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.changeMetric {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--tagGreen);
+  margin-bottom: 0.25rem;
+}
+
+.contextMetric {
+  font-size: 0.8125rem;
+  color: var(--textMuted);
+  font-weight: 500;
+}
+
+.narrative {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+  opacity: 0;
+}
+
+.narrative.visible {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1rem;
+}
+
+.narrative p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--textSecondary);
+  margin: 0 0 1.25rem 0;
+}
+
+.relatedInsights {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #f3f4f6;
+}
+
+.relatedLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--textSecondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0 0 0.5rem 0;
+}
+
+.relatedInsights ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.relatedInsights li {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  border-bottom: 1px solid #f9fafb;
+}
+
+.relatedInsights li:last-child {
+  border-bottom: none;
+}
+
+.relatedInsights li.discovered {
+  color: var(--tagGreen);
+  font-weight: 500;
+}
+
+.relatedInsights li.undiscovered {
+  color: var(--textMuted);
+  font-style: italic;
+}
+
+.expandHint {
+  font-size: 0.8125rem;
+  color: var(--textMuted);
+  text-align: center;
+  padding-top: 0.75rem;
+  font-style: italic;
+}
+
+.hint {
+  text-align: center;
+  padding: 1.25rem;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--cardShadow);
+}
+
+.hint p {
+  margin: 0;
+  color: var(--textSecondary);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .appShell { flex-direction: column; }
+  .sidebar { width: 100%; padding: 0.75rem; }
+  .insightsGrid { grid-template-columns: 1fr; }
+  .title { font-size: 1.5rem; }
+  .main { padding: 1rem; }
+  .header { padding: 1rem; }
+}
