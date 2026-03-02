@@ -1,0 +1,740 @@
+/* Hybrid Guest Analytics - merges traditional dashboard + narrative/story-telling */
+.appShell {
+  --primary: #5D5FEF;
+  --primaryHover: #4c4ed4;
+  --navy: #1A2033;
+  --orange: #FF9500;
+  --tagGreen: #22c55e;
+  --infoBg: #eff6ff;
+  --infoBorder: #3b82f6;
+  --textPrimary: #1a1a1a;
+  --textSecondary: #6b7280;
+  --textMuted: #9ca3af;
+  --border: #e5e7eb;
+  --cardShadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --cardShadowHover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-height: 100vh;
+  display: flex;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background: var(--navy);
+  padding: 1rem 0;
+}
+
+.sidebarSearch {
+  display: flex;
+  align-items: center;
+  margin: 0 0.75rem 1rem;
+}
+
+.skeleton {
+  display: block;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  min-height: 0.5rem;
+}
+
+.skeletonSearch {
+  width: 100%;
+  height: 2rem;
+  border-radius: 8px;
+}
+
+.skeletonSection {
+  width: 4rem;
+  height: 0.625rem;
+}
+
+.skeletonNav {
+  height: 0.875rem;
+}
+
+.skeletonSub {
+  height: 0.75rem;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.sidebarNavItem {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  padding-left: calc(1rem + 4px);
+  border-left: 4px solid transparent;
+  transition: background 0.2s;
+}
+
+.sidebarNavItemActive {
+  border-left-color: var(--orange);
+}
+
+.sidebarNavItemActive .skeleton {
+  background: rgba(255, 149, 0, 0.35);
+}
+
+.sidebarNavSection {
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+}
+
+.sidebarNavSubItem {
+  display: flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  padding-left: 2rem;
+}
+
+.mainWrapper {
+  flex: 1;
+  min-width: 0;
+  background: #f9fafb;
+}
+
+.header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 2rem;
+}
+
+.headerContent {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--textPrimary);
+  margin: 0 0 0.25rem 0;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 0.9375rem;
+  color: var(--textSecondary);
+  margin: 0 0 0.5rem 0;
+  font-weight: 400;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  background: rgba(93, 95, 239, 0.12);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 6px;
+}
+
+.main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+}
+
+/* Filter bar - traditional dashboard */
+.filterBar {
+  margin-bottom: 1.5rem;
+}
+
+.filterGroup {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.filterChip {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--textSecondary);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.filterChip:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filterChip.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: #fff;
+}
+
+.filterRow {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filterSelect {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  background: #fff;
+  color: var(--textPrimary);
+}
+
+.filterButtonSecondary {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  cursor: pointer;
+}
+
+.filterButtonSecondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* Key Story - narrative banner */
+.keyStory {
+  background: linear-gradient(135deg, var(--infoBg) 0%, #f0f9ff 100%);
+  border: 1px solid var(--infoBorder);
+  border-left: 4px solid var(--primary);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.keyStoryContent {
+  padding-right: 2rem;
+}
+
+.keyStoryTitle {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.keyStoryText {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--textPrimary);
+  margin: 0;
+}
+
+.keyStoryDismiss {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: var(--textMuted);
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.keyStoryDismiss:hover {
+  color: var(--textPrimary);
+}
+
+/* Section */
+.section {
+  margin-bottom: 2rem;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  margin: 0 0 1rem 0;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 0;
+}
+
+.viewAllLink {
+  font-size: 0.875rem;
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.viewAllLink:hover {
+  text-decoration: underline;
+}
+
+/* Metrics grid - cards with narrative expand */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metricCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--cardShadow);
+}
+
+.metricLabel {
+  font-size: 0.8125rem;
+  color: var(--textSecondary);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.metricValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--textPrimary);
+  letter-spacing: -0.02em;
+}
+
+.metricChange {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-top: 0.25rem;
+}
+
+.metricChange.positive {
+  color: var(--tagGreen);
+}
+
+.metricChange.negative {
+  color: #dc2626;
+}
+
+.metricPrevious {
+  font-size: 0.75rem;
+  color: var(--textMuted);
+  margin-top: 0.25rem;
+}
+
+/* Charts row */
+.chartsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chartCard {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  box-shadow: var(--cardShadow);
+}
+
+.chartTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  margin: 0 0 1rem 0;
+}
+
+.chartArea {
+  min-height: 200px;
+  display: flex;
+}
+
+.chartYAxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: var(--textMuted);
+  padding-right: 0.5rem;
+  min-width: 2.5rem;
+}
+
+.chartMain {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chartXAxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  font-size: 0.6875rem;
+  color: var(--textMuted);
+}
+
+.chartXAxis span {
+  flex: 1;
+  text-align: center;
+}
+
+.insightCallout {
+  font-size: 0.8125rem;
+  color: var(--textSecondary);
+  line-height: 1.5;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f3f4f6;
+  font-style: italic;
+}
+
+/* Bar chart */
+.barChart {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 160px;
+}
+
+.barWrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+  width: 100%;
+  min-height: 4px;
+  background: var(--primary);
+  border-radius: 4px 4px 0 0;
+  opacity: 0.8;
+}
+
+/* Frequency bars */
+.freqBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.freqBarRow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.freqLabel {
+  font-size: 0.8125rem;
+  color: var(--textSecondary);
+  width: 80px;
+}
+
+.freqBarBg {
+  flex: 1;
+  height: 20px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.freqBarFill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.freqPct {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  width: 40px;
+  text-align: right;
+}
+
+/* Revenue pie chart */
+.revenuePie {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  min-height: 180px;
+}
+
+.pieChart {
+  width: 140px;
+  height: 140px;
+  min-width: 140px;
+  min-height: 140px;
+  border-radius: 50%;
+}
+
+.pieLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.legendItem {
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Table narrative */
+.tableNarrative {
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--infoBg);
+  border-radius: 8px;
+  border-left: 4px solid var(--infoBorder);
+}
+
+.tableNarrative strong {
+  color: var(--textPrimary);
+}
+
+/* Data table */
+.tableWrapper {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  box-shadow: var(--cardShadow);
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.dataTable th,
+.dataTable td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.dataTable th {
+  font-weight: 600;
+  color: var(--textSecondary);
+  background: #f9fafb;
+}
+
+.dataTable th:first-child,
+.dataTable td:first-child {
+  padding-left: 1.25rem;
+}
+
+.dataTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.dataTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: rgba(34, 197, 94, 0.12);
+  color: var(--tagGreen);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.scoreBadge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  background: rgba(93, 95, 239, 0.12);
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+}
+
+.positive {
+  color: var(--tagGreen);
+  font-weight: 500;
+}
+
+.negative {
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* Ask AVA */
+.askAva {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--cardShadow);
+}
+
+.askAvaTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  margin: 0 0 0.25rem 0;
+}
+
+.askAvaSubtext {
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  margin: 0 0 1rem 0;
+}
+
+.askAvaSuggestions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.askAvaSuggestions button {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.8125rem;
+  color: var(--textSecondary);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.askAvaSuggestions button:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.askAvaInput input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.875rem;
+}
+
+.askAvaInput input::placeholder {
+  color: var(--textMuted);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .chartsRow {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .appShell { flex-direction: row; }
+  .sidebar {
+    width: 56px;
+    min-width: 56px;
+    padding: 0.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .sidebarSearch {
+    margin: 0 0.5rem 0.75rem;
+    justify-content: center;
+  }
+  .skeletonSearch {
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    border-radius: 6px;
+  }
+  .sidebarNav {
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .sidebarNavItem {
+    padding: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: none;
+    border-top: 3px solid transparent;
+    justify-content: center;
+  }
+  .sidebarNavItemActive {
+    border-left: none;
+    border-top-color: var(--orange);
+  }
+  .sidebarNavItem .skeleton,
+  .sidebarNavSubItem .skeleton {
+    width: 20px !important;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+  .sidebarNavSection {
+    padding: 0.25rem 0.5rem;
+    margin-top: 0.25rem;
+  }
+  .sidebarNavSection .skeleton {
+    width: 16px !important;
+    min-width: 16px;
+    height: 4px;
+    margin: 0 auto;
+  }
+  .sidebarNavSubItem {
+    padding: 0.35rem 0.5rem;
+    padding-left: 0.5rem;
+    justify-content: center;
+  }
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+  .main { padding: 1rem; }
+  .header { padding: 1rem; }
+  .filterGroup {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 0.5rem;
+  }
+  .tableWrapper {
+    font-size: 0.8125rem;
+  }
+  .dataTable th,
+  .dataTable td {
+    padding: 0.5rem 0.75rem;
+  }
+}
