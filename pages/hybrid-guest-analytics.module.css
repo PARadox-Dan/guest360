@@ -304,6 +304,183 @@
   box-shadow: var(--cardShadow);
 }
 
+/* Swappable cards - 3-dot menu */
+.swappable {
+  position: relative;
+}
+
+.metricCard.swappable {
+  padding-right: 2.5rem;
+}
+
+.moreButton {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  color: var(--textMuted);
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+
+.moreButton:hover {
+  color: var(--textPrimary);
+  background: #f3f4f6;
+}
+
+.moreIcon {
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.contextMenu {
+  position: absolute;
+  top: 2.25rem;
+  right: 0.5rem;
+  z-index: 20;
+  min-width: 120px;
+  padding: 0.25rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--cardShadowHover);
+}
+
+.contextMenuItem {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  text-align: left;
+  color: var(--textPrimary);
+  background: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.contextMenuItem:hover {
+  background: #f3f4f6;
+}
+
+.chartCard.swappable .moreButton {
+  top: 0.75rem;
+  right: 0.75rem;
+}
+
+.chartCard.swappable .contextMenu {
+  top: 2.5rem;
+  right: 0.75rem;
+}
+
+/* Swap modal */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal {
+  width: 90%;
+  max-width: 360px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modalTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--textPrimary);
+  margin: 0;
+}
+
+.modalClose {
+  padding: 0.25rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--textMuted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.modalClose:hover {
+  color: var(--textPrimary);
+}
+
+.modalBody {
+  padding: 1.25rem 1.5rem;
+}
+
+.modalSubtext {
+  font-size: 0.875rem;
+  color: var(--textSecondary);
+  margin: 0 0 1rem 0;
+}
+
+.modalOptions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.modalOptions li {
+  margin-bottom: 0.25rem;
+}
+
+.modalOptions li:last-child {
+  margin-bottom: 0;
+}
+
+.modalOption {
+  display: block;
+  width: 100%;
+  padding: 0.625rem 0.75rem;
+  font-size: 0.9375rem;
+  text-align: left;
+  color: var(--textPrimary);
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.modalOption:hover {
+  background: #f3f4f6;
+}
+
+.modalOptionSelected {
+  background: rgba(93, 95, 239, 0.1);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 500;
+}
+
 .metricLabel {
   font-size: 0.8125rem;
   color: var(--textSecondary);
